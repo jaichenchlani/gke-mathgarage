@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mathgarage
+spec:
+  selector:
+    matchLabels:
+      app: mathgarage
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: mathgarage
+    spec:
+      containers:
+      - name: mathgarage
+        image: gcr.io/mathgarage/mathgarage
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
